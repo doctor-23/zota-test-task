@@ -6,20 +6,27 @@
       v-if="error && onClear"
       type="button"
       :class="styles.errorButton"
-      @click="onClear"
+      @click="handleClear"
       aria-label="Очистить поле"
-    >✕</button>
+    >
+      <IconClose/>
+    </button>
     <span :class="styles.errorMessage" v-if="error">{{ error }}</span>
   </div>
 </template>
 
 <script setup lang="ts">
 import styles from './fields.module.scss'
+import IconClose from "@/components/icons/IconClose.vue";
 
-defineProps({
-  label: String,
-  forId: String,
-  error: String,
-  onClear: Function
-})
+const props = defineProps<{
+  label?: string
+  forId?: string
+  error?: string
+  onClear?: (event: MouseEvent) => void
+}>()
+
+function handleClear(event: MouseEvent) {
+  if (props.onClear) props.onClear(event)
+}
 </script>

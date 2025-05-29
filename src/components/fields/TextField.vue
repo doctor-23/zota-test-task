@@ -5,25 +5,31 @@
       :type="type"
       :value="modelValue"
       :placeholder="placeholder"
-      :class="[filedStyles.commonInput, { [filedStyles.error]: error }]"
+      :class="[filedStyles.textFieldInput, { [filedStyles.error]: error }]"
       @blur="handleBlur"
-      @input="$emit('update:modelValue', $event.target.value)"
+      @input="handleInput"
     />
   </div>
 </template>
 
 <script setup lang="ts">
 import filedStyles from './fields.module.scss'
-const props = defineProps({
-  modelValue: String,
-  id: String,
-  type: { type: String, default: 'text' },
-  error: Boolean,
-  placeholder: String,
-  onBlur: Function
-})
+const props = defineProps<{
+  modelValue?: string
+  id?: string
+  type?: string
+  error?: boolean
+  placeholder?: string
+  onBlur?: (event: FocusEvent) => void
+}>()
+const emit = defineEmits(['update:modelValue'])
+
 function handleBlur(event: FocusEvent) {
   if (props.onBlur) props.onBlur(event)
+}
+function handleInput(event: Event) {
+  const target = event.target as HTMLInputElement | null
+  emit('update:modelValue', target?.value || '')
 }
 </script>
 
