@@ -5,7 +5,7 @@
       :type="type"
       :value="modelValue"
       :placeholder="placeholder"
-      :class="[filedStyles.textFieldInput, { [filedStyles.error]: error }]"
+      :class="[filedStyles.commonInput, { [filedStyles.error]: error }]"
       @blur="handleBlur"
       @input="handleInput"
     />

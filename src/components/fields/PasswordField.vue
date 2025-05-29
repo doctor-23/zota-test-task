@@ -44,7 +44,7 @@ function handleInput(event: Event) {
 
 .toggle-password {
   position: absolute;
-  right: 12px;
+  right: 24px;
   top: 50%;
   display: flex;
   justify-content: center;
