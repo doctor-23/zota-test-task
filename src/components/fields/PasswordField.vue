@@ -9,7 +9,11 @@
       @blur="onBlur && onBlur($event)"
       @input="handleInput"
     />
-    <button type="button" class="toggle-password" @click="show = !show">
+    <button
+      type="button"
+      :class="['toggle-password', { 'error': error }]"
+      @click="show = !show"
+    >
       <slot name="icon-eye" v-if="!show" />
       <slot name="icon-eye-off" v-else />
     </button>
@@ -44,8 +48,8 @@ function handleInput(event: Event) {
 
 .toggle-password {
   position: absolute;
-  right: 24px;
-  top: 50%;
+  right: 0;
+  top: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,10 +59,10 @@ function handleInput(event: Event) {
   border: none;
   background: none;
   cursor: pointer;
-  transform: translateY(-50%);
+  transform: translateY(calc(100% - 1px));
 
   &.error {
-    margin-right: 15px;
+    right: 34px;
   }
 }
 
