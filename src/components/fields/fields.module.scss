@@ -1,0 +1,54 @@
+.formGroup {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 14px;
+  line-height: 18px;
+  color: #2B2A29;
+  user-select: none;
+}
+
+.commonInput {
+  width: 100%;
+  padding: 4px 0;
+  font-size: 16px;
+  line-height: 26px;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #2B2A29;
+  transition: border-color .3s ease-in-out;
+
+  &:hover,
+  &:focus-visible {
+    outline: none;
+    border-color: green;
+  }
+
+  &.error {
+    color: #D60303;
+    border-color: #D60303;
+  }
+}
+
+.errorMessage {
+  margin-top: 4px;
+  color: #D60303;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.errorButton {
+  position: absolute;
+  top: 24px;
+  right: 0;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  color: #D60303;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
