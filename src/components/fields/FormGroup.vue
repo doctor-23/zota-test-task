@@ -3,7 +3,7 @@
     <label v-if="label" :for="forId" :class="styles.label">{{ label }}</label>
     <slot />
     <button
-      v-if="error && onClear"
+      v-if="error && onClear && (value && value.length > 0)"
       type="button"
       :class="styles.errorButton"
       @click="handleClear"
@@ -23,10 +23,13 @@ const props = defineProps<{
   label?: string
   forId?: string
   error?: string
+  value?: string
   onClear?: (event: MouseEvent) => void
 }>()
 
 function handleClear(event: MouseEvent) {
-  if (props.onClear) props.onClear(event)
+  if (props.onClear) {
+    props.onClear(event);
+  }
 }
 </script>

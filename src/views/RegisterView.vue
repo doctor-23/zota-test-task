@@ -3,7 +3,7 @@
     <div class="register-container">
       <h1>Регистрация</h1>
       <form @submit.prevent="handleSubmit" class="register-form">
-        <FormGroup label="Логин*" for-id="login" :error="errors.login" :onClear="() => form.login = ''">
+        <FormGroup label="Логин*" for-id="login" :error="errors.login" :value="form.login || ''" :onClear="() => { form.login = ''; errors.login = '' }">
           <TextField
             id="login"
             v-model="form.login"
@@ -13,7 +13,7 @@
           />
         </FormGroup>
 
-        <FormGroup label="E-mail" for-id="email" :error="errors.email" :onClear="() => form.email = ''">
+        <FormGroup label="E-mail" for-id="email" :error="errors.email" :value="form.email || ''" :onClear="() => { form.email = ''; errors.email = '' }">
           <TextField
             id="email"
             type="email"
@@ -24,7 +24,7 @@
           />
         </FormGroup>
 
-        <FormGroup label="Телефон" for-id="phone" :error="errors.phone" :onClear="() => form.phone = ''">
+        <FormGroup label="Телефон" for-id="phone" :error="errors.phone" :value="form.phone || ''" :onClear="() => { form.phone = ''; errors.phone = '' }">
           <PhoneField
             id="phone"
             v-model="form.phone"
@@ -34,7 +34,7 @@
           />
         </FormGroup>
 
-        <FormGroup label="Пароль*" for-id="password" :error="errors.password" :onClear="() => form.password = ''">
+        <FormGroup label="Пароль*" for-id="password" :error="errors.password" :value="form.password || ''" :onClear="() => { form.password = ''; errors.password = '' }">
           <PasswordField
             id="password"
             v-model="form.password"
@@ -47,7 +47,7 @@
           </PasswordField>
         </FormGroup>
 
-        <FormGroup label="Повторить пароль*" for-id="confirmPassword" :error="errors.confirmPassword" :onClear="() => form.confirmPassword = ''">
+        <FormGroup label="Повторить пароль*" for-id="confirmPassword" :error="errors.confirmPassword" :value="form.confirmPassword || ''" :onClear="() => { form.confirmPassword = ''; errors.confirmPassword = '' }">
           <PasswordField
             id="confirmPassword"
             v-model="form.confirmPassword"
